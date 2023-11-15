@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORKING CALCULATOR</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/calculator" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="calculator">
+            <div class="display">
+                <input placeholder="88888888888888" type="text" class="cal-display">
+            </div>
+            <div class="buttons">
+                <div class="cal-buttons" onclick="appendNum(1)">1</div>
+                <div class="cal-buttons" onclick="appendNum(2)">2</div>
+                <div class="cal-buttons" onclick="appendNum(3)">3</div>
+                <div class="del-button" onclick="delInput()">DEL</div>
+                <div class="cal-buttons" onclick="appendNum(4)">4</div>
+                <div class="cal-buttons" onclick="appendNum(5)">5</div>
+                <div class="cal-buttons" onclick="appendNum(6)">6</div>
+                <div class="cal-buttons" onclick="add()">+</div>
+                <div class="cal-buttons" onclick="appendNum(7)">7</div>
+                <div class="cal-buttons" onclick="appendNum(8)">8</div>
+                <div class="cal-buttons" onclick="appendNum(9)">9</div>
+                <div class="cal-buttons" onclick="minus()">-</div>
+                <div class="cal-buttons" onclick="dot()">.</div>
+                <div class="cal-buttons" onclick="appendNum(0)">0</div>
+                <div class="cal-buttons" onclick="divide()">/</div>
+                <div class="cal-buttons" onclick="multiply()">X</div>
+                <div class="reset-button" onclick="clearInput()">CLEAR</div>
+                <div class="equal-button" onclick="calculate()">=</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentInput = "";
+let currentOperator = "";
+
+function appendNum(num){
+    currentInput += num;
+    document.querySelector(".cal-display").value = currentInput;
+}
+function clearInput() {
+    currentInput = '';
+    currentOperator= '';
+    document.querySelector(".cal-display").value = ' ';
+}
+function delInput() {
+    currentInput = currentInput.slice(0, -1);
+    document.querySelector(".cal-display").value = currentInput;
+}
+function add() {
+    currentOperator = "+";
+    currentInput += currentOperator;
+    document.querySelector(".cal-display").value = currentInput;
+}
+function minus() {
+    currentOperator = "-";
+    currentInput += currentOperator;
+    document.querySelector(".cal-display").value = currentInput;
+}
+function multiply() {
+    currentOperator = "*";
+    currentInput += currentOperator;
+    document.querySelector(".cal-display").value = currentInput;
+}
+function divide() {
+    currentOperator = "/";
+    currentInput += currentOperator;
+    document.querySelector(".cal-display").value = currentInput;
+}
+function dot() {
+    currentOperator = ".";
+    currentInput += currentOperator;
+    document.querySelector(".cal-display").value = currentInput;
+}
+function calculate() {
+    const result = eval(currentInput);
+    console.log(result);
+    document.querySelector(".cal-display").value = result;
+    currentInput.toString();
+    currentOperator = '';
+}
+    </script>
+</body>
+</html>
